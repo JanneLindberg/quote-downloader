@@ -12,8 +12,11 @@
           today (t/today)
           ]
 
-      (is (= date_0 (start-date nil)))
+      (is (= "2000-01-01" (str (start-date nil))))
+      (is (= "2013-01-01" (str (start-date date_1))))
+
       (is (= today (end-date nil)))
+      (is (= "2013-01-01" (str (end-date date_1))))
 
       )))
 
@@ -35,4 +38,3 @@
       (is (= 4 (:e query))) ;; last day
 
     )))
-

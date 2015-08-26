@@ -26,17 +26,13 @@
 (defn start-date
   "Return the start date or an ancient date if nil "
   [startDate]
-  (if-not startDate
-    (t/local-date 2000 01 01)
-    startDate))
+  (or startDate (t/local-date 2000 01 01)))
 
 
 (defn end-date
   "Return todays date if end date is nil"
   [endDate]
-  (if-not endDate
-    (t/today)
-    endDate))
+  (or endDate (t/today)))
 
 
 (defn get-yahoo-stock-data [entry]
