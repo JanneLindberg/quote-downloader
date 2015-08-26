@@ -5,7 +5,7 @@
 
 
 (def yahoo-url "http://itable.finance.yahoo.com/table.csv")
-
+(def default-start-date (t/local-date 2000 01 01))
 
 (defn yahoo-query-map
   "Yahoo query parameters"
@@ -26,7 +26,7 @@
 (defn start-date
   "Return the start date or an ancient date if nil "
   [startDate]
-  (or startDate (t/local-date 2000 01 01)))
+  (or startDate default-start-date))
 
 
 (defn end-date

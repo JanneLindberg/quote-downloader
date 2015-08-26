@@ -6,13 +6,10 @@
 
 (deftest test-1
   (testing "default dates"
-    (let [
-          date_1 (t/local-date 2013 1 1)
-          date_0 (t/local-date 2000 1 1)
-          today (t/today)
-          ]
+    (let [date_1 (t/local-date 2013 1 1)
+          today (t/today)]
 
-      (is (= "2000-01-01" (str (start-date nil))))
+      (is (= (str default-start-date) (str (start-date nil))))
       (is (= "2013-01-01" (str (start-date date_1))))
 
       (is (= today (end-date nil)))
