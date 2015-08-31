@@ -1,7 +1,9 @@
 (ns quote-downloader.core
   (:require
    [org.httpkit.client :as http]
-   [clj-time.core :as t]))
+   [clj-time.core :as t]
+   [clj-time.format :as f]
+))
 
 
 (def yahoo-url "http://itable.finance.yahoo.com/table.csv")
@@ -23,16 +25,23 @@
      }))
 
 
+(defn- parse-date
+  "Parse an date string to a LocalDate"
+  [date-string]
+  (if-not (nil? date-string)
+    (f/parse-local-date (f/formatters :local-date) date-string)))
+
+
 (defn start-date
   "Return the start date or an ancient date if nil "
   [startDate]
-  (or startDate default-start-date))
+  (or (parse-date startDate) default-start-date))
 
 
 (defn end-date
   "Return todays date if end date is nil"
   [endDate]
-  (or endDate (t/today)))
+  (or (parse-date endDate) (t/today)))
 
 
 (defn get-yahoo-stock-data [entry]

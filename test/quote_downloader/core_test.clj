@@ -1,4 +1,5 @@
 (ns quote-downloader.core-test
+  (:import [org.joda.time LocalDate])
   (:require [clojure.test :refer :all]
             [quote-downloader.core :refer :all]
             [clj-time.core :as t]))
@@ -6,14 +7,20 @@
 
 (deftest test-1
   (testing "default dates"
-    (let [date_1 (t/local-date 2013 1 1)
+    (let [date_1 "2013-01-01"
           today (t/today)]
 
       (is (= (str default-start-date) (str (start-date nil))))
+      (is (instance? LocalDate (start-date nil)) "Expected date only")
+
       (is (= "2013-01-01" (str (start-date date_1))))
+      (is (instance? LocalDate (start-date date_1)) "Expected date only")
 
       (is (= today (end-date nil)))
+      (is (instance? LocalDate (end-date nil)) "Expected date only")
+
       (is (= "2013-01-01" (str (end-date date_1))))
+      (is (instance? LocalDate (end-date date_1)) "Expected date only")
 
       )))
 
@@ -35,3 +42,5 @@
       (is (= 4 (:e query))) ;; last day
 
     )))
+
+(run-tests 'quote-downloader.core-test)
