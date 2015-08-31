@@ -22,3 +22,15 @@ EOD stock quote downloader
 
 
 ```
+
+## Contributors
+
+[Contributors](https://github.com/JanneLindberg/quote-downloader/graphs/contributors)
+
+
+## License
+
+Copyright (c) 2015 JanneLindberg
+
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
